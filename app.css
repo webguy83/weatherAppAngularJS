@@ -19,6 +19,10 @@ md-card {
   min-width: 285px;
 }
 
+md-divider {
+  margin: 20px 0;
+}
+
 .forecastBtn {
   display: block;
   margin: auto;

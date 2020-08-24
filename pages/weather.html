@@ -1,4 +1,30 @@
-<h1 class="cityName">{{cityName}}</h1>
+<div class="cityName">
+  <h1>{{cityName}}</h1>
+
+  Intervals:
+  <br />
+  <md-button
+    class="md-raised md-primary"
+    ng-disabled="{{hourIntervals === 4}}"
+    ng-click="go('weather/4')"
+    >4</md-button
+  >
+  <md-button
+    class="md-raised md-primary"
+    ng-disabled="{{hourIntervals === 8}}"
+    ng-click="go('weather/8')"
+    >8</md-button
+  >
+
+  <md-button
+    class="md-raised md-primary"
+    ng-disabled="{{hourIntervals === 12}}"
+    ng-click="go('weather/12')"
+    >12</md-button
+  >
+</div>
+
+<md-divider></md-divider>
 
 <div layout="row" layout-wrap="">
   <md-card

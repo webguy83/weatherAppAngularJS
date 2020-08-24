@@ -18,13 +18,15 @@ angular.module('myApp', ['ngMaterial', 'ngMessages', 'ngResource', 'ngRoute'])
       $location.path(path);
     }
   })
-  .controller('WeatherController', function (cityNameService, $scope, $resource, $log) {
+  .controller('WeatherController', function (cityNameService, $scope, $resource, $routeParams, $location, $log) {
     $scope.cityName = cityNameService.cityName;
+
+    $scope.hourIntervals = +$routeParams.hourIntervals || 8;
 
     $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast")
 
     $scope.weatherAPIOutput = $scope.weatherAPI.get({
-      q: $scope.cityName, cnt: 8, appid: apiKey
+      q: $scope.cityName, cnt: $scope.hourIntervals, appid: apiKey
     })
 
     $scope.convertDate = function (date) {
@@ -33,6 +35,10 @@ angular.module('myApp', ['ngMaterial', 'ngMessages', 'ngResource', 'ngRoute'])
 
     $scope.convertTempToC = function (temp) {
       return Math.round(temp - 273.15);
+    }
+
+    $scope.go = (path) => {
+      $location.path(path);
     }
 
     $log.log($scope.weatherAPIOutput)
@@ -44,6 +50,10 @@ angular.module('myApp', ['ngMaterial', 'ngMessages', 'ngResource', 'ngRoute'])
         controller: 'HomeController'
       })
       .when('/weather', {
+        templateUrl: 'pages/weather.html',
+        controller: 'WeatherController'
+      })
+      .when('/weather/:hourIntervals', {
         templateUrl: 'pages/weather.html',
         controller: 'WeatherController'
       })
