@@ -40,7 +40,9 @@
         <span class="md-subhead">{{w.weather[0].description}}</span>
       </md-card-title-text>
       <md-card-title-media>
-        <div class="md-media-lg card-media"></div>
+        <img class="weather-icon"
+        ng-src={{"http://openweathermap.org/img/wn/"+w.weather[0].icon+"@4x.png"}}
+        alt="{{w.weather[0].description}}" />
       </md-card-title-media>
     </md-card-title>
     <md-card-content>

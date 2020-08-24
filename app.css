@@ -28,6 +28,11 @@ md-divider {
   margin: auto;
 }
 
+md-card-title-media > img.weather-icon {
+  margin: 0 auto;
+  width: auto;
+}
+
 .temp {
   background-color: antiquewhite;
   padding: 5px;
