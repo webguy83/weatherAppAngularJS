@@ -1,0 +1,13 @@
+<div class="myForm">
+  <h4 class="md-title">Forecast by the City</h4>
+  <div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Forecast</label>
+      <input ng-model="cityName" type="text" />
+    </md-input-container>
+  </div>
+
+  <md-button class="md-raised md-warn forecastBtn" ng-click="go('weather')"
+    >Get Forecast</md-button
+  >
+</div>

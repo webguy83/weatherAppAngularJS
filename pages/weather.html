@@ -1,0 +1,33 @@
+<h1 class="cityName">{{cityName}}</h1>
+
+<div layout="row" layout-wrap="">
+  <md-card
+    md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}"
+    md-theme-watch
+    ng-repeat="w in weatherAPIOutput.list"
+  >
+    <md-card-title layout="column">
+      <md-card-title-text>
+        <span class="md-headline"
+          >{{convertDate(w.dt) | date: 'MMM d, y h:mm a'}}</span
+        >
+        <span class="md-subhead">{{w.weather[0].description}}</span>
+      </md-card-title-text>
+      <md-card-title-media>
+        <div class="md-media-lg card-media"></div>
+      </md-card-title-media>
+    </md-card-title>
+    <md-card-content>
+      <p>
+        Temperature:
+        <span class="temp md-title"
+          >{{convertTempToC(w.main.temp)}} &#8451;</span
+        >
+      </p>
+    </md-card-content>
+    <!-- <md-card-actions layout="row" layout-align="end center">
+      <md-button>Action 1</md-button>
+      <md-button>Action 2</md-button>
+    </md-card-actions> -->
+  </md-card>
+</div>

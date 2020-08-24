@@ -1,0 +1,32 @@
+md-toolbar {
+  min-height: auto;
+}
+
+md-input-container {
+  margin: 0;
+}
+
+.cityName {
+  text-align: center;
+}
+
+.myForm {
+  width: 50%;
+  margin: 0 auto;
+}
+
+md-card {
+  min-width: 285px;
+}
+
+.forecastBtn {
+  display: block;
+  margin: auto;
+}
+
+.temp {
+  background-color: antiquewhite;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid rgb(125 125 125);
+}
