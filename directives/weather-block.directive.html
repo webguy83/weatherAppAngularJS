@@ -1,0 +1,22 @@
+<md-card
+  md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}"
+  md-theme-watch
+>
+  <md-card-title layout="column">
+    <md-card-title-text>
+      <span class="md-headline">{{convertTime({date})}}</span>
+      <span class="md-subhead">{{description}}</span>
+    </md-card-title-text>
+    <md-card-title-media>
+      <img class="weather-icon"
+      ng-src={{"http://openweathermap.org/img/wn/"+image+"@4x.png"}}
+      alt="{{description}}" />
+    </md-card-title-media>
+  </md-card-title>
+  <md-card-content>
+    <p>
+      Temperature:
+      <span class="temp md-title">{{convertTempToC({temp})}} &#8451;</span>
+    </p>
+  </md-card-content>
+</md-card>

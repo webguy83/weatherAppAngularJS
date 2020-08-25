@@ -1,61 +1,41 @@
-<div class="cityName">
-  <h1>{{cityName}}</h1>
+<div class="cityName" ng-if="errorMsg.length <= 0">
+  <h1 class="md-display-3">{{cityName}}</h1>
 
   Intervals:
   <br />
   <md-button
     class="md-raised md-primary"
-    ng-disabled="{{hourIntervals === 4}}"
-    ng-click="go('weather/4')"
-    >4</md-button
+    ng-disabled="{{hourIntervals === 24}}"
+    ng-click="go('weather/24')"
+    >24</md-button
   >
   <md-button
     class="md-raised md-primary"
-    ng-disabled="{{hourIntervals === 8}}"
-    ng-click="go('weather/8')"
-    >8</md-button
+    ng-disabled="{{hourIntervals === 32}}"
+    ng-click="go('weather/32')"
+    >32</md-button
   >
 
   <md-button
     class="md-raised md-primary"
-    ng-disabled="{{hourIntervals === 12}}"
-    ng-click="go('weather/12')"
-    >12</md-button
+    ng-disabled="{{hourIntervals === 40}}"
+    ng-click="go('weather/40')"
+    >40</md-button
   >
+  <md-divider></md-divider>
 </div>
-
-<md-divider></md-divider>
-
-<div layout="row" layout-wrap="">
-  <md-card
-    md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}"
-    md-theme-watch
-    ng-repeat="w in weatherAPIOutput.list"
-  >
-    <md-card-title layout="column">
-      <md-card-title-text>
-        <span class="md-headline"
-          >{{convertDate(w.dt) | date: 'MMM d, y h:mm a'}}</span
-        >
-        <span class="md-subhead">{{w.weather[0].description}}</span>
-      </md-card-title-text>
-      <md-card-title-media>
-        <img class="weather-icon"
-        ng-src={{"http://openweathermap.org/img/wn/"+w.weather[0].icon+"@4x.png"}}
-        alt="{{w.weather[0].description}}" />
-      </md-card-title-media>
-    </md-card-title>
-    <md-card-content>
-      <p>
-        Temperature:
-        <span class="temp md-title"
-          >{{convertTempToC(w.main.temp)}} &#8451;</span
-        >
-      </p>
-    </md-card-content>
-    <!-- <md-card-actions layout="row" layout-align="end center">
-      <md-button>Action 1</md-button>
-      <md-button>Action 2</md-button>
-    </md-card-actions> -->
-  </md-card>
+<p class="errorMsg" ng-if="errorMsg.length > 0">{{errorMsg}}</p>
+<div class="weather-row" ng-repeat="(date, day) in weatherAPIOutput">
+  <h2 class="md-display-1">{{date}}</h2>
+  <div layout="row" layout-wrap="">
+    <weather-block
+      ng-repeat="w in day"
+      date="{{w.dt}}"
+      image="{{w.weather[0].icon}}"
+      description="{{w.weather[0].description}}"
+      temp="{{w.main.temp}}"
+      convert-time="convertTime(date)"
+      convert-temp-to-c="convertTempToC(temp)"
+    ></weather-block>
+  </div>
 </div>

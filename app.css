@@ -39,3 +39,19 @@ md-card-title-media > img.weather-icon {
   border-radius: 10px;
   border: 1px solid rgb(125 125 125);
 }
+
+.errorMsg {
+  text-align: center;
+  width: 100%;
+  color: red;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.weather-row > h2 {
+  text-align: center;
+}
+
+.weather-row > .layout-row {
+  justify-content: center;
+}
